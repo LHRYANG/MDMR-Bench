@@ -51,7 +51,7 @@ class Flux2Inferencer(BaseInferencer):
     def generate_image(self, prompt: str, reference_images: List[Image.Image], output_width: Optional[int] = None, output_height: Optional[int] = None) -> Image.Image:
         inputs = {
             "prompt": prompt,
-            "num_inference_steps": 5,
+            "num_inference_steps": 50,
             "guidance_scale": 4.0
         }
         if output_width is not None:

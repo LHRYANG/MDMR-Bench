@@ -388,8 +388,6 @@ outputs/flux2/analysis/
 - `per_case.jsonl` contains individual scores; `by_directory.*` contains direct averages for reference.
 - Only available scores are included. Re-run aggregation after evaluation finishes to update the summaries.
 
-<a id="release-checklist"></a>
-## ✅ Release Checklist
 
 <a id="citation"></a>
 ## 📚 Citation

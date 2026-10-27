@@ -334,7 +334,7 @@ python src/inference/inference.py \
       F2_0001_result.jpg
 ```
 
-The path is `output_dir / task_id / sample_id / sample_id_result.jpg`. It does not depend on the model name, input image directory, or `subtask_id`. Inference saves only RGB JPEG images with quality 100. Model adapters return only the image and do not construct generation metadata. Existing generation JSONs from earlier runs are left untouched and are not read by inference or evaluation. Evaluation reads annotations and checklists directly from the same JSONL manifest.
+The path is `output_dir / task_id / sample_id / sample_id_result.jpg`. 
 
 <a id="gemini-evaluation"></a>
 ## 🤖 Gemini Evaluation

@@ -125,7 +125,7 @@ Image generation models have rapidly advanced, with many models now supporting g
   </thead>
   <tbody>
     <tr><td colspan="7" align="center"><strong>Closed-source Models</strong></td></tr>
-    <tr><td align="left">GPT-Image-2</td><td>91.5</td><td>89.6</td><td>94.8</td><td>90.2</td><td>87.6</td><td>88.7</td></tr>
+    <tr><td align="left">GPT-Image-2</td><td>91.5</td><td>89.6</td><td>84.8</td><td>90.2</td><td>87.6</td><td>88.7</td></tr>
     <tr><td align="left">Nano Banana Pro</td><td>84.9</td><td>87.2</td><td>85.6</td><td>83.3</td><td>84.7</td><td>85.1</td></tr>
     <tr><td align="left">Nano Banana 2</td><td>82.5</td><td>85.6</td><td>75.9</td><td>82.4</td><td>79.8</td><td>81.2</td></tr>
     <tr><td align="left">Seedream 5.0</td><td>77.9</td><td>81.3</td><td>83.6</td><td>78.6</td><td>72.5</td><td>78.8</td></tr>

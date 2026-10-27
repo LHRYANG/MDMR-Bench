@@ -258,11 +258,14 @@ Activate the Python environment with the model dependencies, then run the follow
 cd MDMR-Bench
 ```
 
-The examples assume sibling directories named `MDMR-Bench` for code and `MDMR-bench` for the dataset (note the capital `B` in the code directory and lowercase `b` in the data directory). These are documentation conventions; adjust paths to your local layout without renaming existing directories:
+The examples assume the `MDMR-Bench` code repository contains a benchmark dataset directory also named `MDMR-Bench`. The outer directory is the repository root; the inner directory holds `mdmr.jsonl` and the input images. All commands below run from the outer directory. Adjust paths to your local layout without renaming existing directories:
 
 ```text
 workspace/
   MDMR-Bench/
+    README.md
+    scripts/
+    src/
     MDMR-Bench/
       mdmr.jsonl
       fusion/

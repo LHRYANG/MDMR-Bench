@@ -1,7 +1,7 @@
 <h1 align="center">MDMR-Bench: A Multi-Dimensional Benchmark for Multi-Reference Image Generation</h1>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/xxxx.xxxxx"><img src="https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b.svg" alt="arXiv"></a>
+  <a href="[https://arxiv.org/abs/xxxx.xxxxx](https://arxiv.org/abs/2610.32459v1)"><img src="https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b.svg" alt="arXiv"></a>
   <a href="https://github.com/LHRYANG/MDMR-Bench"><img src="https://img.shields.io/badge/Code-GitHub-181717.svg" alt="Code"></a>
   <a href="huggingface/README.md"><img src="https://img.shields.io/badge/HuggingFace-Model%20Cards-fcc624.svg" alt="HuggingFace"></a>
 </p>

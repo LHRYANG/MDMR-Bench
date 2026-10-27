@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDMR-Bench: Project Page</title>
+    <meta
+      name="description"
+      content="MDMR-Bench: A Multi-Dimensional Benchmark for Multi-Reference Image Generation"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <h1>MDMR-Bench</h1>
+        <p class="subtitle">
+          A Multi-Dimensional Benchmark for Multi-Reference Image Generation
+        </p>
+        <p class="tagline">An open-source work for multi-reference generation evaluation</p>
+        <p class="meta">
+          Bowen Zheng<sup>1*</sup>, Jintao Lin<sup>2*</sup>, ChangHeng Yi<sup>1</sup>,
+          Haoran Yang<sup>3,&#9993;</sup>, Binxiao Huang<sup>3</sup>,
+          Chenyang Lei<sup>3</sup>, Rui Liu<sup>3</sup>, Xihui Liu<sup>2,&#9993;</sup>
+        </p>
+        <p class="meta affiliations">
+          <sup>1</sup>Nanjing University &nbsp;&nbsp;
+          <sup>2</sup>The University of Hong Kong &nbsp;&nbsp;
+          <sup>3</sup>Huawei Research
+        </p>
+        <p class="meta notes">
+          * Equal contribution, in random order.<br />
+          &#9993; Corresponding authors: <code>eurekayang96@outlook.com</code>,
+          <code>xihuiliu@eee.hku.hk</code>.
+        </p>
+        <div class="button-row">
+          <a class="btn" href="#paper">Paper</a>
+          <a class="btn" href="#dataset">Dataset</a>
+          <a class="btn" href="#code">Code</a>
+          <a class="btn" href="#qualitative">Results</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="teaser" class="section">
+        <h2>Overview</h2>
+        <p>
+          MDMR-Bench evaluates multi-reference image generation with diverse
+          tasks and checklist-based diagnostics.
+        </p>
+        <figure>
+          <img src="./assets/fig1_overview.png" alt="MDMR-Bench overview" />
+          <figcaption>
+            Figure 1 from the paper: benchmark overview and checklist-based
+            evaluation.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="abstract" class="section">
+        <h2>Abstract</h2>
+        <p>
+          Image generation models have rapidly advanced, with many models now
+          supporting generation conditioned on multiple reference images and
+          textual instructions. Such models enable a wide range of applications,
+          including entity fusion and attribute transfer across images. However,
+          existing benchmarks for multi-reference image generation rely on
+          limited evaluation dimensions and fail to capture the diverse
+          challenges of the task. To address this limitation, we propose
+          MDMR-Bench, a Multi-Dimensional benchmark for Multi-Reference image
+          generation. MDMR-Bench is designed based on realistic usage scenarios
+          and consists of multiple evaluation subsets spanning diverse
+          dimensions of multi-reference image generation, including (1) common
+          entity fusion and attribute transfer, (2) multi-element extraction
+          from a single image, (3) infographic manipulation, and (4) visual
+          reasoning-intensive generation. This design enables systematic
+          analysis of model capabilities and failure modes across different
+          challenge dimensions. Furthermore, to achieve more reliable and
+          interpretable evaluation, we introduce a checklist-based evaluation
+          protocol that decomposes generation quality into fine-grained
+          evaluation aspects. Instead of relying solely on holistic scoring,
+          our framework uses structured checklists composed of both global-level
+          and atomic-level queries, enabling more diagnostic assessment of model
+          performance. By benchmarking both open-source and proprietary models,
+          we demonstrate that MDMR-Bench provides fine-grained insights into
+          model performance across different dimensions. The dataset is publicly
+          available at Kaggle. The code is released at GitHub.
+        </p>
+      </section>
+
+      <section id="highlights" class="section">
+        <h2>Highlights</h2>
+        <div class="grid three">
+          <article class="card">
+            <h3>Multi-Dimensional Tasks</h3>
+            <p>
+              Covers five major challenge families beyond simple fusion-only
+              settings.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Checklist Evaluation</h3>
+            <p>
+              Uses interpretable yes/no diagnostics with global and atomic
+              granularity.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Diagnostic Power</h3>
+            <p>
+              Reveals capability gaps and failure modes across models and task
+              dimensions.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="construction" class="section">
+        <h2>Sample Construction Pipeline</h2>
+        <figure>
+          <img
+            src="./assets/fig3_sample_construction.png"
+            alt="Sample construction pipeline"
+          />
+          <figcaption>
+            Figure 3 from the paper: image gallery construction, task bucket
+            filling, and validation/refinement.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="statistics" class="section">
+        <h2>Benchmark Statistics</h2>
+        <div class="grid two">
+          <figure>
+            <img
+              src="./assets/fig4_task_distribution.png"
+              alt="Task distribution"
+            />
+            <figcaption>
+              Figure 4(a): task-family and subtask distribution.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/fig4_image_type_distribution.png"
+              alt="Image type distribution"
+            />
+            <figcaption>
+              Figure 4(b): image-type diversity.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="evaluation" class="section">
+        <h2>Evaluation Reliability</h2>
+        <div class="grid two">
+          <figure>
+            <img
+              src="./assets/fig2_inter_judge_agreement.png"
+              alt="Inter-judge agreement"
+            />
+            <figcaption>
+              Figure 2: checklist-based evaluation shows higher inter-judge
+              agreement.
+            </figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/example_checklist_visual.png"
+              alt="Checklist visual diagnosis"
+            />
+            <figcaption>
+              Qualitative example: checklist-based diagnosis between
+              two models.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="tables" class="section">
+        <h2>Benchmark Tables</h2>
+
+        <div class="table-block">
+          <h3>Table 1. Comparison with other benchmarks</h3>
+          <p class="table-note">
+            <span class="cov yes">&#10004;</span> dedicated coverage,
+            <span class="cov partial">&#9651;</span> partial or incidental coverage,
+            <span class="cov no">&#10007;</span> no coverage.
+          </p>
+          <div class="table-wrap">
+            <table class="paper-table">
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Size</th>
+                  <th>Entity Fusion</th>
+                  <th>Multi-Element Extraction</th>
+                  <th>Attribute Transfer</th>
+                  <th>Infographic Manip.</th>
+                  <th>Visual Reasoning</th>
+                  <th>Global Eval.</th>
+                  <th>Atomic Eval.</th>
+                  <th>Metrics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DreamBooth</td>
+                  <td>75</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov partial">&#9651;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td>CLIP Fidelity</td>
+                </tr>
+                <tr>
+                  <td>DreamOmni2</td>
+                  <td>319</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov partial">&#9651;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td>Score-based</td>
+                </tr>
+                <tr>
+                  <td>MICo-Bench</td>
+                  <td>897</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td>Score-based</td>
+                </tr>
+                <tr>
+                  <td>MultiBanana</td>
+                  <td>3769</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov partial">&#9651;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td>Score-based</td>
+                </tr>
+                <tr>
+                  <td>VTEdit-Bench</td>
+                  <td>24220</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov partial">&#9651;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov no">&#10007;</span></td>
+                  <td>Score-based</td>
+                </tr>
+                <tr class="ours">
+                  <td>MDMR-Bench (Ours)</td>
+                  <td>2390</td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td><span class="cov yes">&#10004;</span></td>
+                  <td>Checklist-based</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-block">
+          <h3>Table 2. Main results on MDMR-Bench</h3>
+          <div class="table-wrap">
+            <table class="paper-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Following</th>
+                  <th>Consistency</th>
+                  <th>Composition</th>
+                  <th>Minimality</th>
+                  <th>Quality</th>
+                  <th>Overall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group-row">
+                  <td colspan="7">Closed-source Models</td>
+                </tr>
+                <tr>
+                  <td>Nano Banana Pro</td>
+                  <td>91.2</td>
+                  <td>84.6</td>
+                  <td>83.9</td>
+                  <td>80.4</td>
+                  <td>87.0</td>
+                  <td>85.1</td>
+                </tr>
+                <tr>
+                  <td>Nano Banana 2</td>
+                  <td>88.0</td>
+                  <td>82.0</td>
+                  <td>81.2</td>
+                  <td>72.1</td>
+                  <td>84.1</td>
+                  <td>81.2</td>
+                </tr>
+                <tr>
+                  <td>Seedream 5.0</td>
+                  <td>86.2</td>
+                  <td>74.0</td>
+                  <td>81.1</td>
+                  <td>71.5</td>
+                  <td>84.3</td>
+                  <td>78.8</td>
+                </tr>
+                <tr>
+                  <td>Seedream 4.0</td>
+                  <td>85.3</td>
+                  <td>73.4</td>
+                  <td>80.7</td>
+                  <td>69.7</td>
+                  <td>82.8</td>
+                  <td>77.8</td>
+                </tr>
+                <tr>
+                  <td>GPT-Image-1.5</td>
+                  <td>90.3</td>
+                  <td>72.1</td>
+                  <td>85.9</td>
+                  <td>56.8</td>
+                  <td>85.6</td>
+                  <td>77.5</td>
+                </tr>
+                <tr class="group-row">
+                  <td colspan="7">Open-source Models</td>
+                </tr>
+                <tr>
+                  <td>FLUX.2</td>
+                  <td>46.5</td>
+                  <td>50.0</td>
+                  <td>51.1</td>
+                  <td>51.5</td>
+                  <td>63.8</td>
+                  <td>51.3</td>
+                </tr>
+                <tr>
+                  <td>Qwen-Image-Edit</td>
+                  <td>47.7</td>
+                  <td>46.4</td>
+                  <td>51.5</td>
+                  <td>49.1</td>
+                  <td>61.3</td>
+                  <td>49.9</td>
+                </tr>
+                <tr>
+                  <td>BAGEL</td>
+                  <td>37.3</td>
+                  <td>40.7</td>
+                  <td>34.7</td>
+                  <td>58.1</td>
+                  <td>39.8</td>
+                  <td>41.9</td>
+                </tr>
+                <tr>
+                  <td>DreamOmni2</td>
+                  <td>43.9</td>
+                  <td>31.0</td>
+                  <td>49.8</td>
+                  <td>33.1</td>
+                  <td>63.0</td>
+                  <td>41.9</td>
+                </tr>
+                <tr>
+                  <td>OmniGen2</td>
+                  <td>30.1</td>
+                  <td>22.2</td>
+                  <td>34.6</td>
+                  <td>21.1</td>
+                  <td>42.1</td>
+                  <td>28.6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-block">
+          <h3>
+            Table 3. Performance across MDMR-Bench task types
+          </h3>
+          <div class="table-wrap">
+            <table class="paper-table">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Entity Fusion</th>
+                  <th>Multi-Element Extraction</th>
+                  <th>Visual Reasoning</th>
+                  <th>Attribute Transfer</th>
+                  <th>Infographic Manip.</th>
+                  <th>Overall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group-row">
+                  <td colspan="7">Closed-source Models</td>
+                </tr>
+                <tr>
+                  <td>Nano Banana Pro</td>
+                  <td>84.9</td>
+                  <td>87.2</td>
+                  <td>85.6</td>
+                  <td>83.3</td>
+                  <td>84.7</td>
+                  <td>85.1</td>
+                </tr>
+                <tr>
+                  <td>Nano Banana 2</td>
+                  <td>82.5</td>
+                  <td>85.6</td>
+                  <td>75.9</td>
+                  <td>82.4</td>
+                  <td>79.8</td>
+                  <td>81.2</td>
+                </tr>
+                <tr>
+                  <td>Seedream 5.0</td>
+                  <td>77.9</td>
+                  <td>81.3</td>
+                  <td>83.6</td>
+                  <td>78.6</td>
+                  <td>72.5</td>
+                  <td>78.8</td>
+                </tr>
+                <tr>
+                  <td>Seedream 4.0</td>
+                  <td>77.9</td>
+                  <td>83.1</td>
+                  <td>83.7</td>
+                  <td>76.6</td>
+                  <td>67.9</td>
+                  <td>77.8</td>
+                </tr>
+                <tr>
+                  <td>GPT-Image-1.5</td>
+                  <td>81.8</td>
+                  <td>78.4</td>
+                  <td>76.5</td>
+                  <td>82.3</td>
+                  <td>68.5</td>
+                  <td>77.5</td>
+                </tr>
+                <tr class="group-row">
+                  <td colspan="7">Open-source Models</td>
+                </tr>
+                <tr>
+                  <td>FLUX.2</td>
+                  <td>73.5</td>
+                  <td>54.1</td>
+                  <td>36.7</td>
+                  <td>47.9</td>
+                  <td>44.0</td>
+                  <td>51.3</td>
+                </tr>
+                <tr>
+                  <td>Qwen-Image-Edit</td>
+                  <td>66.9</td>
+                  <td>55.3</td>
+                  <td>44.3</td>
+                  <td>44.1</td>
+                  <td>39.2</td>
+                  <td>49.9</td>
+                </tr>
+                <tr>
+                  <td>BAGEL</td>
+                  <td>41.5</td>
+                  <td>39.9</td>
+                  <td>52.1</td>
+                  <td>35.6</td>
+                  <td>40.5</td>
+                  <td>41.9</td>
+                </tr>
+                <tr>
+                  <td>DreamOmni2</td>
+                  <td>50.0</td>
+                  <td>44.2</td>
+                  <td>34.2</td>
+                  <td>43.1</td>
+                  <td>38.0</td>
+                  <td>41.9</td>
+                </tr>
+                <tr>
+                  <td>OmniGen2</td>
+                  <td>44.9</td>
+                  <td>29.0</td>
+                  <td>22.7</td>
+                  <td>26.9</td>
+                  <td>19.7</td>
+                  <td>28.6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="qualitative" class="section">
+        <h2>Qualitative Cases</h2>
+        <p>
+          Representative cases from benchmark subsets.
+        </p>
+        <div class="grid two">
+          <figure>
+            <img src="./assets/example_fusion.png" alt="Fusion example" />
+            <figcaption>Fusion case.</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/example_attribute_transfer.png"
+              alt="Attribute transfer example"
+            />
+            <figcaption>Attribute Transfer case.</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/example_multiple_extraction.png"
+              alt="Multiple extraction example"
+            />
+            <figcaption>Multiple-Element Extraction case.</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./assets/example_infographic_manipulation.png"
+              alt="Infographic manipulation example"
+            />
+            <figcaption>Infographic Manipulation case.</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/example_reasoning.png" alt="Reasoning example" />
+            <figcaption>Reasoning case.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="links" class="section">
+        <h2>Links</h2>
+        <ul>
+          <li id="paper">
+            Paper (replace): <code>https://arxiv.org/abs/xxxx.xxxxx</code>
+          </li>
+          <li id="dataset">
+            Dataset: <code>https://www.kaggle.com/datasets/6f695be8363ee17928c25f36fa976fd10f976f9f6d4925bc0df74f38dfce268c</code>
+          </li>
+          <li id="code">
+            Code (replace): <code>https://github.com/your-org/your-repo</code>
+          </li>
+        </ul>
+      </section>
+
+      <section id="citation" class="section">
+        <h2>Citation</h2>
+        <pre><code>@misc{zheng2026mdmrbench,
+  title = {MDMR-Bench: A Multi-Dimensional Benchmark for Multi-Reference Image Generation},
+  author = {Zheng, Bowen and Lin, Jintao and Yi, ChangHeng and Yang, Haoran and Huang, Binxiao and Lei, Chenyang and Liu, Rui and Liu, Xihui},
+  year = {2026},
+  note = {Preprint}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>MDMR-Bench Project Page</p>
+      </div>
+    </footer>
+  </body>
+</html>

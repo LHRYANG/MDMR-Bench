@@ -339,9 +339,8 @@ The path is `output_dir / task_id / sample_id / sample_id_result.jpg`.
 <a id="gemini-evaluation"></a>
 ## 🤖 Gemini Evaluation
 
-`scripts/evaluate_outputs.py` reads instructions, ordered `image_paths`, and checklists from the JSONL manifest. Set `--benchmark-output-root` to the exact `--output_dir` used for inference: it looks for `TASK/SAMPLE/SAMPLE_result.jpg` directly, without appending a model directory. No model-name parameter, per-sample source JSON, or generation JSON is needed. Every manifest sample is considered in order. Input images are attached in manifest list order, without filename sorting.
+`scripts/evaluate_outputs.py` reads instructions, ordered `image_paths`, and checklists from the JSONL manifest. Set `--benchmark-output-root` to the exact `--output_dir` used for inference: it looks for `TASK/SAMPLE/SAMPLE_result.jpg` directly.
 
-Evaluation uses direct HTTP requests (`requests`), not the Google SDK. Install the evaluation dependencies if needed:
 
 ```bash
 python -m pip install requests Pillow

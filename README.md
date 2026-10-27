@@ -366,38 +366,17 @@ python scripts/evaluate_outputs.py \
 <a id="score-aggregation"></a>
 ## 📊 Score Aggregation
 
-Aggregate `flux2` results:
+Aggregate scores from the model's results directory (`--benchmark-root` refers to results, not the dataset):
 
 ```bash
 python scripts/aggregate_scores.py \
-  --benchmark-root ../outputs/flux2
+  --benchmark-root outputs/flux2
 ```
 
-Aggregate `qwen-image-edit` results:
-
-```bash
-python scripts/aggregate_scores.py \
-  --benchmark-root ../outputs/qwen
-```
-
-Aggregation uses the result records' `task_id` and `subtask_id` for balanced scoring across the five JSONL tasks. It reads `<sample_id>_results.json`; older model-suffixed scoring files are ignored to avoid counting a sample twice. Summaries are always saved in `analysis/` inside `--benchmark-root`; no `--model` or `--out-root` option is needed. It does not require inference metadata JSONs or subtask directories. Re-running aggregation updates the summaries with the scoring results available at that time.
-
-### Primary Score: Hierarchical Balanced Mean
-
-Use `balanced_summary.json` -> `benchmark.score.overall` as the primary benchmark score, or the `benchmark` row's `overall` column in `balanced_summary.csv`. Scores range from 0 to 1. The script also produces directory-level averages, but those are supplementary diagnostics, not the primary benchmark score.
-
-The balanced aggregation is computed as follows:
-
-1. Map each checklist answer to `Y = 1` or `N = 0`. Within each dimension, the first two questions receive 25% each; the remaining questions equally share the other 50%. For dimensions with only one or two questions, use their arithmetic mean.
-2. Compute each case's `overall` using dimension weights: `following` 20%, `consistency` 25%, `composition` 25%, `minimality` 20%, and `quality` 10%.
-3. Average cases within each subtask, then average subtasks equally within each task, then average tasks equally for the benchmark. Groups use the complete `subtask_id` value; slashes in that value do not introduce additional averaging levels. For `multiple_extraction`, average cases directly to obtain the task score without a subtask layer.
-
-Only available scoring results participate. Missing or failed evaluations without a scoring result are not treated as zero, and tasks or subtasks with no results are omitted from the mean. Before reporting a final benchmark score, confirm that all expected samples are scored; `n_cases` and `n_tasks_used` in the balanced JSON help identify incomplete runs. Partial runs produce provisional scores, not full-benchmark scores.
-
-Output files:
+For Qwen, replace `outputs/flux2` with `outputs/qwen`. Summaries are saved inside the same results directory:
 
 ```text
-<benchmark-root>/analysis/
+outputs/flux2/analysis/
   per_case.jsonl
   by_directory.json
   by_directory.csv
@@ -405,20 +384,12 @@ Output files:
   balanced_summary.csv
 ```
 
-- `balanced_summary.json` / `.csv`: primary hierarchical scores at benchmark, task, and subtask levels, with case counts.
-- `per_case.jsonl`: each case's five dimension scores, `overall`, identifiers, and source paths.
-- `by_directory.json` / `.csv`: direct arithmetic means of case scores within each physical directory, without balancing tasks or subtasks. These can differ from the primary balanced scores.
+- **Primary score:** `balanced_summary.json` -> `benchmark.score.overall` (0–1), averaging cases within subtasks, subtasks within tasks, then tasks. `multiple_extraction` skips the subtask layer.
+- `per_case.jsonl` contains individual scores; `by_directory.*` contains direct averages for reference.
+- Only available scores are included. Re-run aggregation after evaluation finishes to update the summaries.
 
 <a id="release-checklist"></a>
 ## ✅ Release Checklist
-
-Before making this repository public:
-
-- Update project links (paper, dataset, project page).
-- Confirm all released assets are legally redistributable.
-- Remove local-only secrets, caches, and private outputs.
-- Re-run inference/evaluation/aggregation commands end-to-end.
-- Ensure README commands match current code and paths.
 
 <a id="citation"></a>
 ## 📚 Citation
